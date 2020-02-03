@@ -3,16 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import SettingIcon from 'assets/icons/ellipsis.svg';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 30;
-  const left = 16;
+  const top = 20;
+  const left = 15;
 
   return {
-    top: `${top}%`,
+    top: `${top}px`,
     left: `${left}%`,
   };
 }
@@ -28,15 +24,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SettingCategoryBtn() {
+export default function SettingCategoryBtn(props) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  const [topPos, setTopPos] = React.useState(0);
+  let btnSetRef = React.createRef();
 
   const handleOpen = (event) => {
     event.stopPropagation();
     setOpen(true);
+    props.togglePopup();
   };
 
   const handleClose = (event) => {
@@ -46,7 +45,8 @@ export default function SettingCategoryBtn() {
 
   return (
     <>
-      <button type="button" className='setting-category' onClick={(e) => handleOpen(e)}>
+      <button type="button" className='setting-category' ref={btnSetRef}
+              onClick={(e) => handleOpen(e)}>
         <img src={SettingIcon} alt='setting' />
       </button>
       <Modal
