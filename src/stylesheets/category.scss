@@ -1,0 +1,43 @@
+.category {
+  .setting-category {
+    border: 0; 
+    background: transparent;
+    outline: none;
+    width: 24px;
+    height: 24px;
+  }
+  .list {
+    color: #DBDBDC;
+    width: 100%;
+    .title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    ul {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+      .active .item {
+        background: #4D4E50;
+      }
+    }
+    .item {
+      padding: 15px;
+      padding-left: 30px;
+      display: flex;
+      align-items: center;
+      span { 
+        color: #DBDBDC; 
+      }
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}
